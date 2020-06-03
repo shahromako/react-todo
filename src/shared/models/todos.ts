@@ -2,6 +2,7 @@ import { AxiosError } from 'axios';
 
 export interface ITodosState {
   items: ITodo[],
+  oldState: ITodo[],
   loading: boolean,
   error: AxiosError | any;
 }

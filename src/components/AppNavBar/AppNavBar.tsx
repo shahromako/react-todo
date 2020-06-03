@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { fade, makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -9,9 +10,9 @@ import Badge from '@material-ui/core/Badge';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
-import { useSelector } from 'react-redux';
 import { IRootState } from '../../store/store';
 import { ITodosState } from '../../shared/models/todos';
+import { searchTodo } from '../../store/actions/todos';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -82,8 +83,14 @@ export default function AppNavBar() {
     state => state.todos,
   );
 
+  const dispatch = useDispatch();
+
   document.title = `TODO: ${todos.items.length}`;
-  
+
+  useEffect(() => {
+    dispatch(searchTodo(inputValue));
+  }, [dispatch, inputValue]);
+
   return (
     <div className={classes.grow}>
       <AppBar position="static">
@@ -104,14 +111,14 @@ export default function AppNavBar() {
               <SearchIcon />
             </div>
             <InputBase
-              placeholder="Search…"
+              placeholder="Поиск…"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
               value={inputValue}
-              onChange={(e) => {setInputValue(e.target.value)}}
+              onChange={(e) => { setInputValue(e.target.value) }}
             />
           </div>
           <div className={classes.grow} />

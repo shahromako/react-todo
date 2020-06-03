@@ -68,3 +68,10 @@ export const searchTodo = (title: string) => {
     payload: { title },
   };
 }
+
+export const addTodo = (userId: number, title: string) => {
+  return {
+    type: ActionTypes.ADD_TODO,
+    payload: { userId, title },
+  };
+}
