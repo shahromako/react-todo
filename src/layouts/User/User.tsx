@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Container } from '@material-ui/core';
+import { Container, Box } from '@material-ui/core';
 
 import { IRootState } from '../../store/store';
 import { ITodosState, ITodo } from '../../shared/models/todos';
@@ -41,11 +41,11 @@ const User = (props: any) => {
     ) : <></>
 
   return (
-    <div>
+    <Box>
       <Container maxWidth="md">
         {todoList}
       </Container>
-    </div>
+    </Box>
   );
 }
 
