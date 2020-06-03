@@ -1,6 +1,5 @@
 import { createStore, applyMiddleware, Action } from 'redux';
 import reduxThunk, { ThunkMiddleware } from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { ITodosState } from "../shared/models/todos";
 import { IUserState } from "../shared/models/user";
@@ -13,9 +12,7 @@ export interface IRootState {
 
 export const store = createStore(
   rootReducer,
-  composeWithDevTools(
     applyMiddleware(
       reduxThunk as ThunkMiddleware<IRootState, Action | any>,
     ),
-  ),
 );
