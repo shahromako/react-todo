@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+import { Box } from '@material-ui/core';
 
 import './App.scss';
 import AppNavBar from './components/AppNavBar/AppNavBar';
@@ -10,7 +11,7 @@ const User = lazy(() => import('./layouts/User/User'));
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
+      <Box>
         <AppNavBar />
         <Suspense fallback={'Loading...'}>
           <Switch>
@@ -19,7 +20,7 @@ function App() {
             <Redirect to="/todos" />
           </Switch>
         </Suspense>
-      </div>
+      </Box>
     </BrowserRouter>
   );
 }

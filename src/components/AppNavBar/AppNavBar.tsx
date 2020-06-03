@@ -13,6 +13,7 @@ import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 import { IRootState } from '../../store/store';
 import { ITodosState } from '../../shared/models/todos';
 import { searchTodo } from '../../store/actions/todos';
+import { Box } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -92,7 +93,7 @@ export default function AppNavBar() {
   }, [dispatch, inputValue]);
 
   return (
-    <div className={classes.grow}>
+    <Box className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -106,10 +107,10 @@ export default function AppNavBar() {
           <Typography className={classes.title} variant="h6" noWrap>
             Material-React-TODO
           </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
+          <Box className={classes.search}>
+            <Box className={classes.searchIcon}>
               <SearchIcon />
-            </div>
+            </Box>
             <InputBase
               placeholder="Поиск…"
               classes={{
@@ -120,17 +121,17 @@ export default function AppNavBar() {
               value={inputValue}
               onChange={(e) => { setInputValue(e.target.value) }}
             />
-          </div>
-          <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
+          </Box>
+          <Box className={classes.grow} />
+          <Box className={classes.sectionDesktop}>
             <IconButton aria-label="new notifications" color="inherit">
               <Badge badgeContent={todos.items.length} color="secondary">
                 <FormatListBulletedIcon />
               </Badge>
             </IconButton>
-          </div>
+          </Box>
         </Toolbar>
       </AppBar>
-    </div>
+    </Box>
   );
 }
