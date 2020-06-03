@@ -2,7 +2,6 @@ import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import { Box } from '@material-ui/core';
 
-import './App.scss';
 import AppNavBar from './components/AppNavBar/AppNavBar';
 
 const Todos = lazy(() => import('./layouts/Todos/Todos'));
