@@ -37,9 +37,10 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export const AddTodo: React.FC = () => {
-  const [userID, setUserID] = useState<number>(1);
+  const [userID, setUserID] = useState<string>('');
   const [todoTitle, setTodoTitle] = useState<string>('');
   const [inputValid, setInputValid] = useState<boolean>(true);
+  const [selectValid, setSelectValid] = useState<boolean>(true);
 
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -53,9 +54,10 @@ export const AddTodo: React.FC = () => {
   ));
 
   const handleFormSubmit = () => {
-    if (inputValid && userID) {
-      dispatch(addTodo(userID, todoTitle));
+    if (todoTitle && userID) {
+      dispatch(addTodo(Number(userID), todoTitle));
       setTodoTitle('');
+      setUserID('');
     }
   }
 
@@ -75,8 +77,10 @@ export const AddTodo: React.FC = () => {
                 labelId="select-label"
                 id="userSelect"
                 name="user"
+                error={!selectValid}
                 value={userID}
-                onChange={(e) => setUserID(Number(e.target.value))}
+                onChange={(e: any) => setUserID(e.target.value)}
+                onBlur={() => { userID ? setSelectValid(true) : setSelectValid(false) }}
                 fullWidth>
                 {usersOptions}
               </Select>
