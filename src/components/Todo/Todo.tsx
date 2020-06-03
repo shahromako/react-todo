@@ -45,11 +45,6 @@ const useStyles = makeStyles((theme: Theme) =>
     marginLeft: {
       marginLeft: '5px',
     },
-    spaceAround: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-around',
-    },
     flexEnd: {
       display: 'flex',
       alignItems: 'center',
